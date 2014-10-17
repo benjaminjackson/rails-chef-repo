@@ -1,0 +1,26 @@
+# Cheffile
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'ark', '0.1.0'
+cookbook 'vim'
+cookbook 'apt'
+cookbook 'ark', '0.1.0'
+cookbook 'build-essential'
+cookbook 'git'
+cookbook 'mysql', '5.5.2'
+cookbook 'database', '2.3.0'
+cookbook 'ruby_build'
+cookbook 'rbenv', :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.7.2'
+cookbook 'nginx'
+cookbook 'ssh', :git => 'https://github.com/gchef/ssh-cookbook'
+cookbook 'iptables'
+cookbook 'logrotate'
+cookbook 'god', :git => 'https://github.com/longform/god.git'
+cookbook 'sudo'
+cookbook 'nodejs'
+cookbook 'hosts'
+cookbook 'redisio', '1.7.1'
+cookbook 'scout', :git => 'https://github.com/longform/chef-scout.git'
