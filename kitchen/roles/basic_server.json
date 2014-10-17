@@ -1,0 +1,38 @@
+{
+  "name" : "basic_server",
+  "json_class" : "Chef::Role",
+  "description" : "Basic Ubuntu Server",
+  "chef_type" : "role",
+
+  "default_attributes" : {
+
+    "build_essential" : {
+      "compiletime" : true
+    },
+
+    "packages" : [
+      "htop",
+      "iftop"
+    ],
+    
+    "users" : [ "ben" ],
+
+    "groups" : {
+      "sudo" : { "members" : ["ben"] }
+    },
+
+    "ssh" : {
+      "password_authentication" : "yes",
+      "permit_root_login" : "no"
+    }
+  },
+
+  "run_list" : [
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[vim]",
+    "recipe[emacs]",
+    "recipe[git]",
+    "recipe[ssh]"
+  ]
+}

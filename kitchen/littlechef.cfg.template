@@ -1,0 +1,4 @@
+[userinfo]
+user = chef
+password = chef_user_password
+encrypted_data_bag_secret = /full/path/to/your/infrastructure/kitchen/config/encrypted_data_bag_secret

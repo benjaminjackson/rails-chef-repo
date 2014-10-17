@@ -1,0 +1,33 @@
+{
+  "ipaddress": "0.0.0.0",
+  "platform": "ubuntu",
+  "platform_family": "debian",
+  "platform_version": "12.04",
+  "run_list" : [
+    "role[basic_server]",
+    "role[rails_server]"
+  ],
+
+  "databases" : {
+    "database_name" : {
+      "name" : "database_name",
+      "username" : "app"
+    }
+  },
+
+  "mysql" : {
+    "tunable" : {
+      "innodb_log_file_size" : "64M",
+      "innodb_buffer_pool_size" : "256M"
+    }
+  },
+
+  "app_config" : {
+    "environment" : "production",
+    "nginx" : {
+      "host" : {
+        "default" : "0.0.0.0"
+      }
+    }
+  }
+}

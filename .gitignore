@@ -1,1 +1,4 @@
-cookbooks/
+kitchen/cookbooks/
+kitchen/littlechef.cfg
+kitchen/tmp
+kitchen/nodes/*.json

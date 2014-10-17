@@ -1,0 +1,65 @@
+{
+  "name" : "rails_server",
+  "json_class": "Chef::Role",
+  "description": "Rails Application Server",
+  "chef_type": "role",
+
+  "default_attributes" : {
+
+    "build_essential" : {
+      "compiletime" : true
+    },
+
+    "redisio" : {
+      "version" : "2.8.4",
+      "mirror" : "http://download.redis.io/releases/"
+    },
+
+    "packages" : [
+      "libcurl3",
+      "libcurl3-gnutls",
+      "libcurl4-openssl-dev"
+    ],
+    
+    "users": [ "app", "deploy" ],
+
+    "groups": {
+      "app" : { "members" : ["app", "deploy", "www-data"] },
+      "www-data" : { "members" : ["app", "deploy", "www-data"] }
+    },
+
+    "mysql" : {
+      "bind_address" : "0.0.0.0",
+      "port" : "3306",
+      "allow_remote_root" : true,
+      "client" : {
+        "packages" : ["mysql-client", "libmysqlclient-dev", "ruby-mysql"]
+      },
+      "tunable" : {
+        "character-set-server" : "utf8",
+        "collation-server" : "utf8_general_ci"
+      }
+    },
+
+    "databases" : {},
+
+    "rbenv" : {
+      "user_installs" : [
+        { "user" : "app",
+          "gems" : {
+            "1.9.3-p448" : [
+              { "name" : "rails" }
+            ]
+          }
+        }
+      ]
+    }
+  },
+
+  "run_list" : [
+    "recipe[database]",
+    "recipe[database::mysql]",
+    "recipe[redisio::install]",
+    "recipe[redisio::enable]"
+  ]
+}

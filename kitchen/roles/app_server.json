@@ -1,0 +1,71 @@
+{
+  "name" : "app_server",
+  "json_class": "Chef::Role",
+  "description": "Application Server",
+  "chef_type": "role",
+
+  "default_attributes" : {
+
+    "redisio" : {
+      "safe_install" : false,
+      "version" : "2.8.4",
+      "mirror" : "http://download.redis.io/releases/"
+    },
+
+    "packages" : [
+      "libcurl3",
+      "libcurl3-gnutls",
+      "libcurl4-openssl-dev"
+    ],
+    
+    "users": [ "app", "deploy" ],
+
+    "groups": {
+      "app" : { "members" : ["app", "deploy", "www-data"] },
+      "www-data" : { "members" : ["app", "deploy", "www-data"] },
+      "sudo" : { "members" : ["deploy"] }
+    },
+
+    "rbenv" : {
+      "user_installs" : [
+        { "user" : "app",
+          "rubies" : [ "1.9.3-p448" ],
+          "global" : "1.9.3-p448",
+          "gems" : {
+            "1.9.3-p448" : [
+              { "name" : "ruby-shadow"},
+              { "name" : "bundler" },
+              { "name" : "backup" }
+            ]
+          }
+        }
+      ]
+    },
+
+    "nginx" : {
+      "default_site_enabled" : false,
+      "worker_connections" : 4096
+    },
+
+    "app_config" : {
+      "username" : "app",
+      "app_home" : "/home/app",
+      "nginx" : {
+        "access_log" : "access.log",
+        "error_log" : "error.log",
+        "htpasswd" : [],
+        "ssl" : false
+      }
+    }
+  },
+
+  "run_list" : [
+    "recipe[ruby_build]",
+    "recipe[rbenv::user]",
+    "recipe[nginx]",
+    "recipe[app_server]",
+    "recipe[redisio::install]",
+    "recipe[redisio::enable]"
+  ]
+  
+}
