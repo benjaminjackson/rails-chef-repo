@@ -28,7 +28,7 @@ Copy over `kitchen/littlechef.cfg.template` to `kitchen/littlechef.cfg` and upda
 The template uses an SSH config file at `~/.ssh/config`: a typical one looks like this:
 
     Host host.name.yourapp.com  
-        User ubuntu  
+        User chef  
         IdentityFile ~/Downloads/mykey.pem  
 
 ## Set up Encrypted Data Bags
@@ -53,13 +53,26 @@ Password hashes are created with:
 
 `openssl passwd -1 "theplaintextpassword"`
 
-To edit the encrypted data bag databags/users/ubuntu.json do
+To create the encrypted data bag databags/users/app.json do
 
-`knife solo data bag edit users ubuntu`
+`knife solo data bag create users app --secret-file config/encrypted_data_bag_secret`
 
-`knife solo data bag edit users ubuntu --secret-file config/encrypted_data_bag_secret`
+To edit the bag after creation:
 
-Create data bags for all the users you need and 
+`knife solo data bag create users app --secret-file config/encrypted_data_bag_secret`
+
+Create data bags for server users:
+
+    knife solo data bag create users app --secret-file config/encrypted_data_bag_secret 
+    knife solo data bag create users deploy --secret-file config/encrypted_data_bag_secret 
+
+Create data bag for mysql root users:
+
+    knife solo data bag create mysql_root_users/mysql --secret-file config/encrypted_data_bag_secret 
+
+Create data bag for all databases you'll be using on the node (replace `database_name` with each database's name):
+
+    knife solo data bag create databases/database_name --secret-file config/encrypted_data_bag_secret 
 
 ### Run pre-chef script
 
