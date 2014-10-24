@@ -15,10 +15,11 @@
       "iftop"
     ],
     
-    "users" : [ ],
+    "users": [ "app", "deploy" ],
 
-    "groups" : {
-      "sudo" : { "members" : [ ] } 
+    "groups": {
+      "app" : { "members" : ["app", "deploy", "www-data"] },
+      "www-data" : { "members" : ["app", "deploy", "www-data"] }
     },
 
     "ssh" : {
@@ -34,6 +35,7 @@
     "recipe[vim]",
     "recipe[emacs]",
     "recipe[git]",
-    "recipe[ssh]"
+    "recipe[ssh]",
+    "recipe[nginx]"
   ]
 }

@@ -53,16 +53,9 @@ end
 # to fix that here
 
 execute "fix ownership of #{node[:app_config][:app_path]}" do
-  command "chown -R app:app #{node[:app_config][:app_home]}"
+  command "chown -R app:app #{node[:app_config][:app_path]}"
   only_if { Etc.getpwuid(File.stat("#{node[:app_config][:app_path]}/..").uid).name != "app" }
 end
-
-# Clone the app
-
-# execute "clone app to #{node[:app_config][:app_path]}" do
-#   user "app"
-#   command "git clone #{node[:app_config][:git_repo]} #{node[:app_config][:app_path]}"
-# end
 
 # Nginx config
 

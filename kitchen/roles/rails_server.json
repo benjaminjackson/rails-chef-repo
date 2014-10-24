@@ -21,13 +21,6 @@
       "libcurl4-openssl-dev"
     ],
     
-    "users": [ "app", "deploy" ],
-
-    "groups": {
-      "app" : { "members" : ["app", "deploy", "www-data"] },
-      "www-data" : { "members" : ["app", "deploy", "www-data"] }
-    },
-
     "mysql" : {
       "bind_address" : "0.0.0.0",
       "port" : "3306",
@@ -57,10 +50,10 @@
   },
 
   "run_list" : [
-    "recipe[rails_server]",
-    "recipe[rails_server::mysql]",
     "recipe[database]",
     "recipe[database::mysql]",
+    "recipe[rails_server::mysql]",
+    "recipe[rails_server]",
     "recipe[redisio::install]",
     "recipe[redisio::enable]"
   ]

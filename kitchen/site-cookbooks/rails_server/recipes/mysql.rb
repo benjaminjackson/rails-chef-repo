@@ -1,5 +1,13 @@
 ## Mysql
 
+user 'mysql' do
+  system true
+end
+
+gem_package 'mysql' do
+  action :install
+end
+
 mysql_data_bag = Chef::EncryptedDataBagItem.load('mysql_root_users', node[:mysql_root_user_databag])
 
 # For some reason all of these have to be set

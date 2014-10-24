@@ -1,0 +1,21 @@
+{
+  "name": "data_bag_item_mysql_root_users_comics",
+  "json_class": "Chef::DataBagItem",
+  "chef_type": "data_bag_item",
+  "data_bag": "mysql_root_users",
+  "raw_data": {
+    "id": "comics",
+    "password": {
+      "encrypted_data": "vlJIt/q+d61K3BOXGOEu+CFM1iOlHMUOCKJSO1YUFIbp1/0CROkfMtcr+GWH\ng/NLp5fQyLiPpH7RbT3J9xQRLQ==\n",
+      "iv": "KU/x9RMiho6XJVkWMmVbIg==\n",
+      "version": 1,
+      "cipher": "aes-256-cbc"
+    },
+    "password_plaintext": {
+      "encrypted_data": "QbfXW/GtHhYbrQYb6w0pD1bqRLejCW36kNfD6JGTYjLxaQ4n8T20sv+ua9Q/\ng3im\n",
+      "iv": "mlPWtbiwtHRVQkjWYFCEjg==\n",
+      "version": 1,
+      "cipher": "aes-256-cbc"
+    }
+  }
+}

@@ -7,13 +7,12 @@
     "role[basic_server]",
     "role[rails_server]"
   ],
-  
-  "users" : [ "yournamehere" ],
 
-  "groups" : {
+  "site_users" : [ "yournamehere" ],
+
+  "site_groups" : {
     "sudo" : { "members" : ["yournamehere"] }
   },
-
 
   "databases" : {
     "database_name" : {
@@ -28,13 +27,25 @@
       "innodb_buffer_pool_size" : "256M"
     }
   },
+  
+  "mysql_root_user_databag" : "mysql",
 
   "app_config" : {
-    "environment" : "production",
+    "name" : "app",
+    "app_path" : "/home/app/www/app",
     "nginx" : {
       "host" : {
         "default" : "0.0.0.0"
-      }
+      },
+      "root_path" : "/home/app/www/app/public",
+      "log_path" : "/var/log/nginx/app",
+      "access_log" : "access.log",
+      "error_log" : "error.log",
+      "htpasswd" : []
     }
+  },
+
+  "scout": {
+    "environment": "production"
   }
 }
