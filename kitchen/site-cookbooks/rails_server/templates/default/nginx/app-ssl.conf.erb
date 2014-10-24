@@ -1,0 +1,62 @@
+server {
+  charset utf-8;
+
+  server_name <%= node[:app_config][:nginx][:host][:public] %> <%= node[:app_config][:nginx][:host][:default] %>;
+
+  listen 443 ssl;
+  ssl_certificate    /etc/nginx/ssl_keys/<%= node[:app_config][:nginx][:ssl_certificate] %>.pem;
+  ssl_certificate_key    /etc/nginx/ssl_keys/<%= node[:app_config][:nginx][:ssl_certificate] %>.key;
+  ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;
+
+  access_log  /var/log/nginx/app/ssl-access.log;
+  error_log  /var/log/nginx/app/ssl-error.log;
+
+  root /home/app/www/app/public;
+
+  location / {
+
+    # Remove trailing slashes.
+    rewrite ^/(.*)/$ /$1 break;
+
+    # Support rails page caching under /cached.
+    #
+    # Putting index.html directly after $uri allows
+    # us to take the whole site down for maintenance.
+    try_files $uri /index.html $uri/index.html /cached/$uri/index.html /cached/$uri.html @app;
+  }
+
+  location @app {
+    proxy_pass  http://unicorn_rails;
+    proxy_redirect     off;
+
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+
+    client_max_body_size       10m;
+    client_body_buffer_size    128k;
+
+    proxy_connect_timeout      90;
+    proxy_send_timeout         90;
+    proxy_read_timeout         90;
+
+    proxy_buffer_size          4k;
+    proxy_buffers              4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+  }
+
+  # Covers all images, css, and javascript files.
+  location ~ ^/assets/  {
+    root /home/app/www/app/public;
+    gzip_static on;
+    expires max;
+    add_header Cache_Control public;
+  }
+
+  # Don't try too hard to find favicons.
+  location ~ ^/favicon.(ico|gif|png) {
+    try_files $uri =404;
+  }
+}

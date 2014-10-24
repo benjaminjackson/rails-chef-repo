@@ -1,0 +1,35 @@
+{
+  "name": "rails_server",
+  "description": "Sets up a rails app server",
+  "long_description": "Sets up a rails app server",
+  "maintainer": "Longform",
+  "maintainer_email": "will@longform.org",
+  "license": "",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "dependencies": {
+    "app_server": ">= 0.0.0",
+    "mysql" : ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "rails_server": "Sets up a rails app",
+    "rails_server::mysql": "Sets mysql root credentials from a databag"
+  },
+  "version": "1.0.0"
+}

@@ -15,10 +15,10 @@
       "iftop"
     ],
     
-    "users" : [ "ben" ],
+    "users" : [ ],
 
     "groups" : {
-      "sudo" : { "members" : ["ben"] }
+      "sudo" : { "members" : [ ] } 
     },
 
     "ssh" : {
@@ -28,6 +28,7 @@
   },
 
   "run_list" : [
+    "recipe[basic_server]",
     "recipe[apt]",
     "recipe[build-essential]",
     "recipe[vim]",

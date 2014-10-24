@@ -1,0 +1,3 @@
+<% node[:app_config][:nginx][:htpasswd].each do |entry| %>
+<%= entry[:name] %>:<%= entry['password'] %>
+<% end %>

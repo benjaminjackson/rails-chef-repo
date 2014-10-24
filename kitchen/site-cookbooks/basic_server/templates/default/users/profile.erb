@@ -1,0 +1,36 @@
+#######
+#
+# WARNING: THIS FILE IS MANAGED BY CHEF.
+#
+# Shell customizations should be placed in $HOME/.profile.d/user.sh
+# or any script in that directory that isn't managed by chef.
+#
+######
+
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# Execute profile scripts
+
+if [ -f "$HOME/.profile.d/user.sh" ]; then
+    . "$HOME/.profile.d/user.sh"
+fi
+
+if [ -d "$HOME/.profile.d/chef" ]; then
+  for i in "$HOME/.profile.d/chef/*.sh"; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+# set prompt: ``username@hostname:/directory $ ''
+PS1="[\u@\e[1;91m\]\H\[\e[0m\]:\w] " 
+case `id -u` in
+      0) PS1="${PS1}# ";;
+      *) PS1="${PS1}$ ";;
+esac

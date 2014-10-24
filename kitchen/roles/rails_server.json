@@ -57,6 +57,8 @@
   },
 
   "run_list" : [
+    "recipe[rails_server]",
+    "recipe[rails_server::mysql]",
     "recipe[database]",
     "recipe[database::mysql]",
     "recipe[redisio::install]",

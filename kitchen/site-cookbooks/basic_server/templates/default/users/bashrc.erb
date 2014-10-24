@@ -1,0 +1,32 @@
+#######
+#
+# WARNING: THIS FILE IS MANAGED BY CHEF. CHANGES MAY BE OVERWRITTEN.
+#
+# Shell customizations should be placed in $HOME/.bashrc.d/user.sh
+# or any script in that directory that isn't managed by chef.
+#
+######
+
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Execute bashrc scripts
+
+if [ -f "$HOME/.bashrc.d/user.sh" ]; then
+    . "$HOME/.bashrc.d/user.sh"
+fi
+
+if [ -d "$HOME/.bashrc.d/chef" ]; then
+  for i in "$HOME/.bashrc.d/chef/*.sh"; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+# END .BASHRC SCRIPTS CONFIGURATION

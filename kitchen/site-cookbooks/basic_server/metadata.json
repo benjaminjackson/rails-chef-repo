@@ -1,0 +1,32 @@
+{
+  "name": "basic_server",
+  "description": "Sets up an Ubuntu server ready for managing",
+  "long_description": "Sets up an Ubuntu server ready for managing.",
+  "maintainer": "Longform",
+  "maintainer_email": "will@longform.org",
+  "license": "",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "basic_server": "Sets up an Ubuntu server ready for managing"
+  },
+  "version": "1.0.0"
+}

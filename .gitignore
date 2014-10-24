@@ -2,3 +2,5 @@ kitchen/cookbooks/
 kitchen/littlechef.cfg
 kitchen/tmp
 kitchen/nodes/*.json
+kitchen/config/encrypted_data_bag_secret
+kitchen/data_bags/users/*

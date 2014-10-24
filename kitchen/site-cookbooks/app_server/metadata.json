@@ -1,0 +1,38 @@
+{
+  "name": "app_server",
+  "description": "Server with an app user and related defaults.",
+  "long_description": "Server with an app user and related defaults.",
+  "maintainer": "Longform",
+  "maintainer_email": "will@longform.org",
+  "license": "",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "dependencies": {
+    "ruby_build" : ">= 0.0.0",
+    "rbenv" : ">= 0.0.0",
+    "nginx" : ">= 0.0.0",
+    "sudo" : ">= 0.0.0",
+    "god" : ">= 0.0.0",
+    "logrotate" : ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "app_server": "Server with an app user and related defaults."
+  },
+  "version": "1.0.0"
+}

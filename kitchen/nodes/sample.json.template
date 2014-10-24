@@ -7,6 +7,13 @@
     "role[basic_server]",
     "role[rails_server]"
   ],
+  
+  "users" : [ "yournamehere" ],
+
+  "groups" : {
+    "sudo" : { "members" : ["yournamehere"] }
+  },
+
 
   "databases" : {
     "database_name" : {

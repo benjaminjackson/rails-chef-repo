@@ -1,0 +1,13 @@
+# Tuning
+
+[mysqld]
+<% if node['mysql']['tunable']['innodb_buffer_pool_size'] %>
+innodb_buffer_pool_size = <%= node['mysql']['tunable']['innodb_buffer_pool_size'] %>
+<% end %>
+<% if node['mysql']['tunable']['innodb_log_file_size']  %>
+innodb_log_file_size    = <%= node['mysql']['tunable']['innodb_log_file_size'] %>
+<% end %>
+
+<% if node['mysql']['server']['slow_query_log_file'] %>
+slow_query_log_file = <%= node['mysql']['server']['slow_query_log_file'] %>
+<% end %>
