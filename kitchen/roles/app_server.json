@@ -13,6 +13,7 @@
     },
 
     "packages" : [
+      "nodejs",
       "libcurl3",
       "libcurl3-gnutls",
       "libcurl4-openssl-dev"
