@@ -32,12 +32,13 @@
 
   "app_config" : {
     "name" : "app",
-    "app_path" : "/home/app/www/app",
+    "app_path" : "/home/app/www/app/current",
+    "environment" : "production",
     "nginx" : {
       "host" : {
         "default" : "0.0.0.0"
       },
-      "root_path" : "/home/app/www/app/public",
+      "root_path" : "/home/app/www/app/current/public",
       "log_path" : "/var/log/nginx/app",
       "access_log" : "access.log",
       "error_log" : "error.log",
