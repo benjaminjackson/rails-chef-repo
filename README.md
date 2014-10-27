@@ -46,7 +46,7 @@ openssl rand -base64 512 | tr -d '\r\n' > config/encrypted_data_bag_secret
 
 ### System user passwords
 
-In order to set user passwords, chef uses ruby-shadow with the shadow password hash. This is stored in the user's data bag rather than the plaintext password. For convenience we store the password in a separate
+In order to set user passwords (**BUT NOT DATABASE PASSWORDS**), chef uses ruby-shadow with the shadow password hash. This is stored in the user's data bag rather than the plaintext password. For convenience we store the password in a separate
 unused attribute. The databag is encrypted and can thus be checked into git.
 
 Password hashes are created with:
