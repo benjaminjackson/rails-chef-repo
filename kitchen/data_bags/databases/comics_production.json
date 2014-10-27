@@ -1,1 +1,15 @@
-{"name":"data_bag_item_databases_comics_production","json_class":"Chef::DataBagItem","chef_type":"data_bag_item","data_bag":"databases","raw_data":{"id":"comics_production","password":{"encrypted_data":"4B6nxhRFitjvV8bweGUxA8PZx1op5kDGhvHP1Bi2mD2Gi5J+mSB+RF+9Yfwx\nz7OSLOrSRwjDoeAkhFIj7BLF/g==\n","iv":"CgVkOaw4sKLBbpYQLNvbeA==\n","version":1,"cipher":"aes-256-cbc"}}}
+{
+  "name": "data_bag_item_databases_comics_production",
+  "json_class": "Chef::DataBagItem",
+  "chef_type": "data_bag_item",
+  "data_bag": "databases",
+  "raw_data": {
+    "id": "comics_production",
+    "password": {
+      "encrypted_data": "cVN55x5rT0+9W8xv3mBiXwiotmo2bFRWkBlhhE3O98gQ9IEQPLjo64LKjvq4\n+4NS\n",
+      "iv": "P6xRDnvwm0v+J73ZvxBzCA==\n",
+      "version": 1,
+      "cipher": "aes-256-cbc"
+    }
+  }
+}
