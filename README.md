@@ -5,6 +5,14 @@ This project aims to be everything you need to set up multiple servers with litt
 
 All terminal commands below should be run locally from the `kitchen` directory unless otherwise noted.
 
+## Open Port 80 if Necessary
+
+If you're setting up your server on Amazon EC2 or another host that blocks port 80 by default, you'll need to set up your server's security group with access to port 80 or you won't be able to access your rails site once everything is set up. On EC2:
+
+1. From the instances list in the EC2 Management Console, scroll over to "Security Groups" column and click the group for your server.
+2. Click "Actions > Edit inbound rules"
+3. Add a new rule with type "HTTP" and save the rule set.
+
 ## Dependencies
 
 ### Installing Littlechef
