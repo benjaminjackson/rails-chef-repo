@@ -153,7 +153,7 @@ God.watch do |w|
 
   # Start, stop and restart commands for the process.
   # Here, we use unicorn to start the app and send signals to stop and restart.
-  w.start = "/bin/bash -c 'cd #{rails_root}; RAILS_ENV=<%= node[:app_config][:environment] %> /home/<%= node[:app_config][:username] %>/.rbenv/shims/bundle exec /home/<%= node[:app_config][:username] %>/.rbenv/shims/unicorn -c #{rails_root}/config/unicorn.rb -E <%= node[:app_config][:environment] %> -D'"
+  w.start = "/bin/bash -c 'cd #{rails_root}; RAILS_ENV=<%= node[:app_config][:environment] %> /home/<%= node[:app_config][:username] %>/.rbenv/shims/bundle exec unicorn -c #{rails_root}/config/unicorn.rb -E <%= node[:app_config][:environment] %> -D'"
   w.stop = "kill -QUIT `cat #{w.pid_file}`"
   w.restart = "kill -USR2 `cat #{w.pid_file}`" # hot deploy
   w.log = "#{rails_root}/log/god.log"
