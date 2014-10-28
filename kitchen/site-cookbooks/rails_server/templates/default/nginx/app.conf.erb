@@ -34,7 +34,7 @@ server {
   access_log  /var/log/nginx/app/access.log;
   error_log  /var/log/nginx/app/error.log;
 
-  root /home/app/www/app/public;
+  root <%= node[:app_config][:nginx][:root_path] %>;
 
   location / {
 
@@ -71,7 +71,7 @@ server {
 
   # Covers all images, css, and javascript files.
   location ~ ^/assets/  {
-    root /home/app/www/app/public;
+    root <%= node[:app_config][:nginx][:root_path] %>;
     gzip_static on;
     expires max;
     add_header Cache_Control public;
