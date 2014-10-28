@@ -23,8 +23,7 @@
 
     "groups": {
       "app" : { "members" : ["app", "deploy", "www-data"] },
-      "www-data" : { "members" : ["app", "deploy", "www-data"] },
-      "sudo" : { "members" : ["deploy"] }
+      "www-data" : { "members" : ["app", "deploy", "www-data"] }
     },
 
     "rbenv" : {
